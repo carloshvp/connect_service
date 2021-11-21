@@ -1,0 +1,29 @@
+# gRCP Documentation
+
+## Message format and service
+
+```
+syntax = "proto3";
+
+message LocationMessage {
+    int32 person_id = 1;
+    float longitude = 2;
+    float latitude = 3;
+}
+
+service LocationService {
+    rpc Create (LocationMessage) returns (LocationMessage);
+}
+```
+
+## Sample Request
+
+1. Run the project (README.md file).
+2. Install `requirements`:
+```
+pip install -r modules/loc-producer/requirements.txt
+```
+3. Run `client.py`:
+```
+python modules/loc-producer/app/udaconnect/client.py
+```
