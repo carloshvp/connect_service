@@ -17,9 +17,6 @@ DATE_FORMAT = "%Y-%m-%d"
 api = Namespace("UdaConnect", description="Connections via geolocation.")  # noqa
 
 
-# TODO: This needs better exception handling
-
-
 @api.route("/locations")
 @api.route("/locations/<location_id>")
 @api.param("location_id", "Unique ID for a given Location", _in="query")
