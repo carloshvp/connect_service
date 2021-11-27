@@ -1,33 +1,35 @@
-openapi: 3.0.0
+openapi: "3.0.0"
 info:
   description: Services for managing persons and connections
-  version: "1.0.0"
+  version: 1.0.0
   title: UdaConnect API
+servers:
+  - url: http://localhost:30002/api
 paths:
-  "/api/persons":
+  /persons:
     get:
       summary: Retrieve persons
       operationId: get_persons_resource
       description: Retrieve persons
       responses:
-        "200":
+        '200':
           description: Success
           content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Person"
-        "404":
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Person"
+        '404':
           description: Requested person ID was not found
     post:
       summary: Creates person
       operationId: post_persons_resource
       description: Creates person
       responses:
-        "200":
+        '200':
           description: Success
-        "400":
+        '400':
           description: Invalid input
-        "409":
+        '409':
           description: This person already exists
       requestBody:
         content:
@@ -35,7 +37,7 @@ paths:
             schema:
               $ref: "#/components/schemas/Person"
         description: Person to add
-  "/api/persons/{person_id}":
+  /persons/{person_id}:
     get:
       summary: Retrieve single person
       operationId: get_person_resource
@@ -48,13 +50,13 @@ paths:
           required: true
           description: ID of the person to get
       responses:
-        "200":
+        '200':
           description: Successfully retrieved a person
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/InventoryItem"
-        "404":
+                $ref: "#/components/schemas/Person"
+        '404':
           description: Requested person ID was not found
 components:
   schemas:
@@ -67,14 +69,14 @@ components:
         - company_name
       properties:
         id:
-          type: int
+          type: integer
           example: 1
-        name:
+        first_name:
           type: string
           example: "Frank"
-        brandName:
+        last_name:
           type: string
           example: "Shader"
-        weight:
+        company_name:
           type: string
           example: "USDA"
